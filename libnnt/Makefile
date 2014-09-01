@@ -21,7 +21,13 @@ PKG_NAME:=libnnt
 PKG_VERSION:=0.2
 PKG_RELEASE:=0
 
-PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=git://github.com/nomadnt/LibNNT.git
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_VERSION:=HEAD
+PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
+PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk	
 
@@ -31,7 +37,7 @@ define Package/libnnt
   TITLE:=Nomad NT core library
   URL:=http://lab.nomadnt.com/project/libnnt
   MAINTAINER:=Filippo Sallemi <fsallemi@nomadnt.com>
-  DEPENDS:=+iwget
+#  DEPENDS:=+iwget
 endef
 
 define Package/libnnt/description
@@ -42,18 +48,12 @@ define Package/libnnt/config
 	source "$(SOURCE)/Config.in"
 endef
 
-define Build/Prepare
-  $(CP) ./files/ $(PKG_BUILD_DIR)/
-endef
-
-define Build/Configure
-endef
-
-define Build/Compile
-endef
-
 define Package/libnnt/install
-	$(CP) $(PKG_BUILD_DIR)/files/* $(1)/
+	#$(INSTALL_DIR) $(1)/sbin
+	#$(INSTALL_DIR) $(1)/lib/nnt
+
+	#$(INSTALL_BIN) $(PKG_INSTALL_DIR)/valid $(1)/sbin
+	$(CP) $(PKG_INSTALL_DIR)/* $(1)/
 endef
 
 $(eval $(call BuildPackage,libnnt))
