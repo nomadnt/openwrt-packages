@@ -1,0 +1,44 @@
+config COOVACHILLI_COA
+	bool "Enable CoA RADIUS support"
+	depends PACKAGE_coova-chilli
+	default y
+
+config COOVACHILLI_UAMDOMAINFILE
+	bool "Enable loading of mass uamdomains from file"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_LAYER3
+	bool "Enable support for Layer3 only operation"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_CHILLIPROXY
+	bool "Enable support for HTTP AAA Proxy"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_MULTIROUTE
+	bool "Enable support for multiple routes"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_MULTILAN
+	bool "Enable support for multiple LANs"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_CHILLIREDIR
+	bool "Enable support for Redir server"
+	depends PACKAGE_coova-chilli
+	default y
+
+config COOVACHILLI_MINIPORTAL
+	bool "Enable support Coova miniportal"
+	depends PACKAGE_coova-chilli
+	default n
+
+config COOVACHILLI_REDIRINJECT
+	bool "Enable Redir content-injection support"
+	depends PACKAGE_coova-chilli
+	default y
