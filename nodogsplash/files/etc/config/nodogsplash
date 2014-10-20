@@ -1,0 +1,92 @@
+#config 'section' 'general'
+#	option 'redirect_url'		'http://nomadnt.com/'
+#	option 'idle_timeout'		'10'
+#	option 'force_timeout'		'360'
+
+#config 'section' 'limit'
+#	option 'clients'	'20'
+#	option 'download'	'384'
+#	option 'upload'		'64'
+
+config 'section' 'gateway'
+#	option 'name' 		'NoMeOSplash'
+#	option 'external'	'eth0'
+	option 'interface' 	'lan'
+#	option 'address' 	'192.168.1.1'
+#	option 'port' 		'2050'
+#	option 'range' 		'0.0.0.0/0'
+
+#config 'section' 'mac'
+#	option 'role'	'block'
+#	list 'mac'		'00:00:00:00:00:01'
+#	list 'mac'		'00:00:00:00:00:02'
+#	list 'mac'		'00:00:00:00:00:03'
+#	list 'trust'	'00:11:22:33:44:55'
+
+#config 'section' 'authentication'
+#	option 'immediate' 	'0'
+#	option 'attempts'	'5'
+#	list 'username'		'guest1'
+#	list 'username'		'guest2'
+#	list 'password'		'nodog1'
+#	list 'password'		'nodog2'
+
+config 'preauthenticated'
+	option 'rule'	'allow'
+	option 'proto'	'tcp udp'
+	option 'port' 	'53'
+	
+config 'authenticated'
+	option 'rule'	'allow'
+	option 'proto'	'tcp'
+	option 'port'	'80'
+	option 'dest'	'192.168.1.1'
+
+config 'authenticated'
+	option 'rule'	'block'
+	option 'dest'	'192.168.0.0/16'
+
+config 'authenticated'
+	option 'rule'	'block'
+	option 'dest'	'10.0.0.0/8'
+
+config 'authenticated'
+	option 'rule' 	'allow'
+	option 'proto'	'tcp'
+	option 'port' 	'22'
+
+config 'authenticated'
+	option 'rule'	'allow'
+	option 'proto'	'tcp udp'
+	option 'port'	'53'
+
+config 'authenticated'
+	option 'rule'	'allow'
+	option 'proto'	'tcp'
+	option 'port'	'80'
+
+config 'authenticated'
+	option 'rule'	'allow'
+	option 'proto'	'tcp'
+	option 'port' 	'443'
+
+config 'userstorouter'
+	option 'rule' 	'allow'
+	option 'proto'	'tcp'
+	option 'port' 	'22'
+	
+config 'userstorouter'
+	option 'rule'	'allow'
+	option 'proto'	'tcp udp'
+	option 'port'	'53'
+
+config 'userstorouter'
+	option 'rule'	'allow'
+	option 'proto'	'udp'
+	option 'port'	'67'
+
+config 'userstorouter'
+	option 'rule' 	'allow'
+	option 'proto'	'tcp'
+	option 'port' 	'80'
+
