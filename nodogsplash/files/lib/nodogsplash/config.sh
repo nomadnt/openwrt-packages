@@ -107,6 +107,23 @@ nds_config_user_authentication(){
 	}
 }
 
+nds_config_empty_rule_policies(){
+	local cfg="empty_rule_policy"
+	local authenticated_users preauthenticated_users users_to_router trusted_users trusted_users_to_router
+
+	config_get authenticated_users $cfg authenticated_users
+	config_get preauthenticated_users $cfg preauthenticated_users
+	config_get users_to_router $cfg users_to_router
+	config_get trusted_users $cfg trusted_users
+	config_get trusted_users_to_router $cfg trusted_users_to_router
+
+	[ -n "$authenticated_users" ] && printf "EmptyRuleSetPolicy authenticated-users %s\n" "$authenticated_users" >> $CFG_FILE
+	[ -n "$preauthenticated_users" ] && printf "EmptyRuleSetPolicy preauthenticated-users %s\n" "$preauthenticated_users" >> $CFG_FILE
+	[ -n "$users_to_router" ] && printf "EmptyRuleSetPolicy users-to-router %s\n" "$users_to_router" >> $CFG_FILE
+	[ -n "$trusted_users" ] && printf "EmptyRuleSetPolicy trusted-users %s\n" "$trusted_users" >> $CFG_FILE
+	[ -n "$trusted_users_to_router" ] && printf "EmptyRuleSetPolicy trusted-users-to-router %s\n" "$trusted_users_to_router" >> $CFG_FILE
+}
+
 nds_config_firewall(){
 
 	nds_config_rules(){
@@ -162,6 +179,9 @@ nds_config_mac_mechanism
 
 # Configuring user authentication
 nds_config_user_authentication
+
+# Configuring EmptyRuleSetPolicy
+nds_config_empty_rule_policies
 
 # Configuring firewall rules
 nds_config_firewall

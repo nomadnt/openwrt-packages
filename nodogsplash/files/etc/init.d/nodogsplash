@@ -174,3 +174,9 @@ test_module() {
 	do_module_tests "ipt_IMQ"
 	do_module_tests "sch_htb"
 }
+
+restart(){                                                                    
+	stop                                                                    
+	sleep 1s                                 
+	start                                    
+}
